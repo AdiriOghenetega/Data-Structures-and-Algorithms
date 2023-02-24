@@ -101,24 +101,100 @@ const til= {
 // const availDollar = til.dollar * 100
 // delete til.dollar
 // const remainder = totalCents%availDollar
-function cashback(amount){
-  const amountArr =  amount.split(",")
-  const dollar = amountArr[0]
-  const cents = amountArr[1]
-  const totalCents = (dollar * 100) + cents
+// function cashback(amount){
+//   const amountArr =  String(amount).split(".")
+//   const dollar = amountArr[0]
+//   const cents = amountArr[1]
+//   const totalCents = (dollar * 100) + cents
 
-  const tilArr=O
+//   const tilArr=O
 
-  let availDollar = til.dollar * 100
-  delete til.dollar
-  let remainder = totalCents%availDollar
+//   let availDollar = til.dollar * 100
+//   delete til.dollar
+//   let remainder = totalCents%availDollar
 
-  if(remainder === 0){
-    return til
-  }else{
+//   if(remainder === 0){
+//     return til
+//   }else{
 
-      return cashback(remainder)
-  }
+//       return cashback(remainder)
+//   }
+// }
+
+// console.log(cashback(20.47))//not solved ,come back to this later
+
+//Question
+//given
+let str = "i love javascript"
+//write code to convert str to "tpircsavaj evol i"
+//simply reverse the string
+let reversedString = str.split("").reverse().join("")
+console.log(reversedString)
+
+//Question
+const profile = {
+    name:"techsith",
+    getName:()=>{
+        console.log(this.name)
+    }
 }
+profile.getName()//given the function above, what will this return. if undefined, what can you do to make it return "techsith"
+//ans : profile.getName returns undefined , because the "this" keyword in getName function references the global scope (window) ,arrow functions are anonymous functions hence "this" references the global scope . unlike "this" regular function declaration that references the object in which it was called . 
+//also, you can't bind an arrow function
+//what can you do to make it return "techsith" , write the function as below
+const profile2 = {
+    name:"techsith",
+    getName:function(){
+        console.log(this.name)
+    }
+}
+profile2.getName()
 
-console.log(cashback(20.47))
+//Question
+//given the array below , find the number of max-number
+let x = [1,2,2,4,2,4] // should return 2 because there are two 4s in there
+
+const maxNumber = x.filter(item=> item === Math.max(...x))
+const numOfMaxNum = maxNumber.length
+console.log(numOfMaxNum)
+
+//Question
+//Given the code implemetation below , how will be the order of its console.log
+//Note: setTimeout() is an asynchronous function, meaning that the timer function will not pause execution of other functions in the functions stack. In other words, you cannot use setTimeout() to create a "pause" before the next function in the function stack fires.
+const arr = [5,120,15,21]
+function timoutFunc(){
+    for(let i=0;i<arr.length;i++){
+        setTimeout(()=>{
+            console.log(`index: ${i},element: ${arr[i]}`)
+        },arr[i])
+    }
+}
+timoutFunc()
+
+//Question
+let time = "11:03 PM"
+//convert to 24hr time format
+function convert(format){
+let [time,meridiem] = format.split(" ")
+let [hour,minutes] = time.split(":")
+let hourInt = parseInt(hour)
+if(meridiem === "PM"){
+    hourInt += 12
+}
+if(hourInt >=24){
+    hourInt = "00"
+}
+console.log(`${hourInt}:${minutes}`)
+}
+convert(time)
+
+//Question
+//given 
+let numX= 2
+//convert number to hexadecimal string
+hexString = numX.toString(16)
+console.log(hexString)
+//And reverse the process with:
+
+numY = parseInt(hexString, 16);
+
