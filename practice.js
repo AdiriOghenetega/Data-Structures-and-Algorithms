@@ -198,3 +198,27 @@ console.log(hexString)
 
 numY = parseInt(hexString, 16);
 
+
+//Question
+//calculate sum of elements on the perimeter of the 2 dimensional array given below
+const matrix = [
+    [1,1,1],
+    [1,1,1],
+    [1,1,1],
+    [1,1,1]
+]
+//approach - calculate sum of all elements in the outer arrays(on index 0 and 2 relative to the given array),also calculate sum of the first and last elements on the middle arrays, then add the sums to given final result
+function sumOfPeri(arr){
+    let sum = 0
+    let sumArr=0
+    arr.map((element,index)=>{
+        if(index === 0 || index === arr.length -1){
+          sumArr =  element.reduce((acc,curr)=> acc + curr)
+        }else{
+            sumArr = element[0] + element[element.length - 1]
+        }
+        sum += sumArr
+    })
+    console.log(sum)
+}
+sumOfPeri(matrix)
