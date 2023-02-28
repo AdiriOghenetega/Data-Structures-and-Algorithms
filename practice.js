@@ -222,3 +222,45 @@ function sumOfPeri(arr){
     console.log(sum)
 }
 sumOfPeri(matrix)
+
+//Question
+//build a custom function with the same operational characteristics as a reduce function
+Array.prototype.myReduce = function(callback,curr){
+    let currentValue = curr
+    if(curr){
+        currentValue = curr
+    }else{
+        currentValue = 0
+    }
+   for(let i=0;i<this.length;i++){
+    currentValue = callback(this[i],currentValue)
+   }
+   return currentValue
+}
+const a=["2",2,3]
+console.log(a.myReduce((acc,cur)=>{
+   return acc + cur
+},2))
+
+//build own map function
+Array.prototype.myMap = function(callback){
+    let result = []
+    for(let i=0;i<this.length;i++){
+        result.push(callback(this[i]))
+    }
+    return result
+}
+console.log(a.myMap(item=>item * 2))
+
+//build own filter function
+Array.prototype.myFilter = function(callback){
+    let result=[]
+    for(let i=0;i<this.length;i++){
+        if(callback(this[i]) === true){
+            result.push(this[i])
+        }
+    }
+    return result
+    }
+    
+    console.log(a.myFilter(item=> item%2 === 0))
